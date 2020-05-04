@@ -15,7 +15,8 @@ if __name__ == '__main__':
         print("Scrie un cuvant")
         CuvantAles = str(input())
 
-        #Ia sufixul cuvantului ales si stocheaza cuvinte care incep cu el folosind functia "CuvintePrefix()"
+        #Ia sufixul cuvantului ales si stocheaza cuvinte care incep cu el 
+        #folosind functia "CuvintePrefix()"
         SufixCuvant = CuvantAles[-2] + CuvantAles[-1]
         Cuvinte = CuvintePrefix(SufixCuvant)
         MaxScor = 0
@@ -30,8 +31,8 @@ if __name__ == '__main__':
             Cuvinte[i] = Cuvinte[i].replace("ț", "t")
             Cuvinte[i] = Cuvinte[i].replace("î", "i")
 
-            #Scorul este invers proportional cu numarul de cuvinte care incep cu sufixul cuvintelor din lista. Numarul de cuvinte este obtinut 
-            #folosind functia "NumarCuvintePrefix()"
+            #Scorul este invers proportional cu numarul de cuvinte care incep cu sufixul cuvintelor din lista.
+            #Numarul de cuvinte este obtinut folosind functia "NumarCuvintePrefix()"
             Scor = 1 / NumarCuvintePrefix(Cuvinte[i][-2] + Cuvinte[i][-1]) * 1000
 
             #Print cu scorul si cuvantul pentru a arata procesul
