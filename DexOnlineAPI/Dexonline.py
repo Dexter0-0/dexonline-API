@@ -193,10 +193,10 @@ def CuvantulLunii(Data = "0"):
     Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
     return Word
 
+def ArticolulLunii():
+    return "Work in progress"
+
 def CuvantAleatoriu():
     #salut ba dexter
     CuvantAleatoriu = requests.get('https://dexonline.ro/ajax/randomWord.php')
     return CuvantAleatoriu.text
-
-def ArticolulLunii():
-    return "Work in progress"
