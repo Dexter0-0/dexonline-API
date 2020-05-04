@@ -128,10 +128,10 @@ def CuvinteSinonim(Cuvant, NumarCuvinte = 0):
     for i in range(len(Words)):
         Words[i] = Words[i].replace(", ", "").replace(".", "")
 
-    Test = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
+    Words2 = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
 
-    for i in range(len(Test)):
-        Words.append(Test[i])
+    for i in range(len(Words2)):
+        Words.append(Words2[i])
 
     if NumarCuvinte != 0:
         return Words[:NumarCuvinte]
@@ -139,25 +139,25 @@ def CuvinteSinonim(Cuvant, NumarCuvinte = 0):
         return Words
 
 def CuvinteAntonim(Cuvant, NumarCuvinte = 0):
-    AntonymousPage = "https://dexonline.net/sinonime-" + Cuvant
-    Tree = html.fromstring(requests.get(AntonymousPage).content)
-    Words = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/text()')
+        AntonymousPage = "https://dexonline.net/antonime-" + Cuvant
+        Tree = html.fromstring(requests.get(AntonymousPage).content)
+        Words = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/text()')
+        
+        while (", " in Words):
+            Words.remove(", ")
 
-    while (", " in Words):
-        Words.remove(", ")
+        for i in range(len(Words)):
+            Words[i] = Words[i].replace(", ", "").replace(".", "")
 
-    for i in range(len(Words)):
-        Words[i] = Words[i].replace(", ", "").replace(".", "")
+        Words2 = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
 
-    Test = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
+        for i in range(len(Words2)):
+            Words.append(Words2[i])
 
-    for i in range(len(Test)):
-        Words.append(Test[i])
-
-    if NumarCuvinte != 0:
-        return Words[:NumarCuvinte]
-    else:
-        return Words
+        if NumarCuvinte != 0:
+            return Words[:NumarCuvinte]
+        else:
+            return Words
 
 #------------------------------------------------------------------------#
 def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
