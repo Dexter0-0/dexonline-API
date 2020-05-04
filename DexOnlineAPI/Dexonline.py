@@ -162,18 +162,19 @@ def CuvinteAntonim(Cuvant, NumarCuvinte = 0):
         return Words
 
 #------------------------------------------------------------------------#
-#MAI STRICATA CA VIATA MEA
 def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
     #Broken af momentan
     WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
     Tree = html.fromstring(requests.get(WordPage).content)
 
     Words = Tree.xpath('/html/body/div[1]/main/div/div/div[1]/div[2]/p/span[1]/text()')
-    print(Words)
+    return "Work in progress"
 
-#declinari
+def DeclinariCuvant():
+    return "Work in progress"
 
-#sinteza
+def SintezaCuvant():
+    return "Work in progress"
 
 #------------------------------------------------------------------------#
 def CuvantulZilei(Data = "0"):
@@ -198,3 +199,6 @@ def CuvantAleatoriu():
     #salut ba dexter
     CuvantAleatoriu = requests.get('https://dexonline.ro/ajax/randomWord.php')
     return CuvantAleatoriu.text
+
+def ArticolulLunii():
+    return "Work in progress"
