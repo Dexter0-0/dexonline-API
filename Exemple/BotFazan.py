@@ -33,7 +33,7 @@ if __name__ == '__main__':
             #Scorul este invers proportional cu numarul de cuvinte care incep cu sufixul cuvintelor din lista
             Scor = 1 / NumarCuvintePrefix(Cuvinte[i][-2] + Cuvinte[i][-1]) * 1000
 
-            #Print cu scorul si cuvantul pentru a demonstra procesul
+            #Print cu scorul si cuvantul pentru a arata procesul
             print(i, "-", Cuvinte[i], ":", Scor)
 
             #Memoreaza cel mai bun cuvant
@@ -45,5 +45,5 @@ if __name__ == '__main__':
             if MaxScor > 50:
                 break
 
-        #Arata cuvantul gasit
+        #Print cu cuvantul gasit
         print("Cuvantul ales este", CuvantFinal)
