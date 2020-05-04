@@ -1,24 +1,25 @@
-#-------------------------------------------------------------------------------------
-#                               !!Important!!
-#
-#   Dexonline isi declina orice responsabilitate fata de utilizarea
-#   programelor sau aplicatiilor existente in aceasta pagina.
-#
-#   Nu imi asum responsabilitatea pentru orice "Eroare", probleme sau
-#   daune cauzatate de acest cod
-#
-#   This program is free software: you can redistribute it and/or modify it
-#   under the terms of the GNU General Public License as published by the  Free
-#   Software Foundation, either version 3 of the License, or (at your option)
-#   any later version.
-#
-#   This program is distributed in the hope that it will be useful, but WITHOUT
-#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-#   FOR  A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# ------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------#
+#                               !!Important!!                                        #
+#                                                                                    #
+#   Dexonline isi declina orice responsabilitate fata de utilizarea                  #
+#   programelor sau aplicatiilor existente in aceasta pagina.                        #
+#                                                                                    #
+#   Nu imi asum responsabilitatea pentru orice "Eroare", probleme sau                #
+#   daune cauzatate de acest cod                                                     #
+#                                                                                    #
+#   This program is free software: you can redistribute it and/or modify it          #
+#   under the terms of the GNU General Public License as published by the  Free      #
+#   Software Foundation, either version 3 of the License, or (at your option)        #
+#   any later version.                                                               #
+#                                                                                    #
+#   This program is distributed in the hope that it will be useful, but WITHOUT      #
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS    #
+#   FOR  A PARTICULAR PURPOSE.  See the GNU General Public License for more details. #
+#                                                                                    #
+#   You should have received a copy of the GNU General Public License                #
+#   along with this program.  If not, see <https://www.gnu.org/licenses/>.           #
+#                                                                                    #
+# -----------------------------------------------------------------------------------#
 
 from lxml import html
 import requests
