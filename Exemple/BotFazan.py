@@ -23,7 +23,8 @@ if __name__ == '__main__':
 
         #Trece prin toate cuvintele care incep cu sufixul cuvantului ales si le atribuie un scor
         for i in range(len(Cuvinte)):
-            #Dex online nu accepta cuvintele in linkuri daca au diacritice (cuvinte care incep cu "șa vor fi 0")
+            #Dex online nu accepta cuvintele in linkuri daca au diacritice 
+            #(cuvinte care incep cu "șa vor fi 0")
             Cuvinte[i] = Cuvinte[i].lower()
             Cuvinte[i] = Cuvinte[i].replace("ă", "a")
             Cuvinte[i] = Cuvinte[i].replace("â", "a")
