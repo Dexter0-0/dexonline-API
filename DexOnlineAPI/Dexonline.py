@@ -162,6 +162,7 @@ def CuvinteAntonim(Cuvant, NumarCuvinte = 0):
         return Words
 
 #------------------------------------------------------------------------#
+#MAI STRICATA CA VIATA MEA
 def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
     #Broken af momentan
     WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
@@ -193,6 +194,7 @@ def CuvantulLunii(Data = "0"):
     Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
     return Word
 
+#NU MERGE INCA
 def CuvantAleatoriu():
     WordPage = "https://dexonline.ro"
     Tree = html.fromstring(requests.get(WordPage).content)
