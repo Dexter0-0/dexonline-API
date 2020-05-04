@@ -194,8 +194,7 @@ def CuvantulLunii(Data = "0"):
     Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
     return Word
 
-#NU MERGE INCA
 def CuvantAleatoriu():
-    WordPage = "https://dexonline.ro"
-    Tree = html.fromstring(requests.get(WordPage).content)
-    return Tree.xpath("")
+    #salut ba dexter
+    CuvantAleatoriu = requests.get('https://dexonline.ro/ajax/randomWord.php')
+    return CuvantAleatoriu.text
