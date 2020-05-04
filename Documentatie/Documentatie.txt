@@ -331,48 +331,135 @@
 
 #------------------------------------------------------------------------#
 
+11. DefinitieCuvant:
 
+  * PARAMETRII:
+    Cuvantul
+    
+  * RETURN:
+    Un string cu definitia cuvantului
+    
+  * FUNCTIA:
+    def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
+      //Broken af momentan
+      
+      WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
+      Tree = html.fromstring(requests.get(WordPage).content)
 
+      Words = Tree.xpath('/html/body/div[1]/main/div/div/div[1]/div[2]/p/span[1]/text()')
+      return "Work in progress"
 
+#------------------------------------------------------------------------#
 
+12. DeclinariCuvant:
 
+  * PARAMETRII:
+    Cuvantul
+    
+  * RETURN:
+    Un string cu declinarile cuvantului
+    
+  * FUNCTIA:
+    def DeclinariCuvant():
+      return "Work in progress"
 
-def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
-    #Broken af momentan
-    WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
-    Tree = html.fromstring(requests.get(WordPage).content)
+#------------------------------------------------------------------------#
 
-    Words = Tree.xpath('/html/body/div[1]/main/div/div/div[1]/div[2]/p/span[1]/text()')
-    return "Work in progress"
+13. SintezaCuvant:
 
-def DeclinariCuvant():
-    return "Work in progress"
+  * PARAMETRII:
+    Cuvantul
+    
+  * RETURN:
+    Un string cu sinteza cuvantului
+    
+  * FUNCTIA:
+    def SintezaCuvant():
+      return "Work in progress"
 
-def SintezaCuvant():
+#------------------------------------------------------------------------#
+
+14. Cuvantul zilei:
+
+  * PARAMETRII:
+    Data (Optional) !! Format: 2020-10-04 (yyyy-mm-dd) !!
+    
+  * RETURN:
+    Un string cu cuvantul zilei curente sau a datei precizate
+    
+  * FUNCTIA:
+    def CuvantulZilei(Data = "0"):
+      //Daca nu a fost precizata o data se ia cea curenta
+      if Data == "0":
+        Data = str(datetime.datetime.now())[:10].replace("-", "/")
+        
+      //Alcatuieste linkul cuvantului  
+      WordPage = "https://dexonline.ro/cuvantul-zilei/" + Data
+      
+      //Ia Tree-ul paginii
+      Tree = html.fromstring(requests.get(WordPage).content)
+      
+      //Ia cuvantul si elimina caracterele speciale deoarece erau glitchy
+      Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div[2]/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",",             "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
+      
+      //returneaza cuvantul
+      return Word
+
+#------------------------------------------------------------------------#
+
+15. Cuvantul lunii:
+
+  * PARAMETRII:
+    Data (Optional) !! Format: 2020-10 (yyyy-mm) !!
+    
+  * RETURN:
+    Un string cu cuvantul lunii curente sau a datei precizate
+    
+  * FUNCTIA:
+    def CuvantulLunii(Data = "0"):
+      //Daca nu a fost precizata o data se ia cea curenta
+      if Data == "0":
+        Data = str(datetime.datetime.now())[:7].replace("-", "/")
+     //Alcatuieste linkul cuvantului  
+     WordPage = "https://dexonline.ro/cuvantul-lunii/" + Data
+     
+     //Ia Tree-ul paginii
+     Tree = html.fromstring(requests.get(WordPage).content)
+     
+     //Ia cuvantul si elimina caracterele speciale deoarece erau glitchy
+     Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",",                "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
+     
+     //returneaza cuvantul
+     return Word
+
+#------------------------------------------------------------------------#
+
+16. Articolul lunii:
+
+  * PARAMETRII:
+    Data (Optional) !! Format: 2020-10 (yyyy-mm) !!
+    
+  * RETURN:
+    Un string cu articolul lunii curente sau a datei precizate
+    
+  * FUNCTIA:
+    def ArticolulLunii():
     return "Work in progress"
 
 #------------------------------------------------------------------------#
-def CuvantulZilei(Data = "0"):
-    if Data == "0":
-        Data = str(datetime.datetime.now())[:10].replace("-", "/")
 
-    WordPage = "https://dexonline.ro/cuvantul-zilei/" + Data
-    Tree = html.fromstring(requests.get(WordPage).content)
-    Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div[2]/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
-    return Word
+17. Articolul lunii:
 
-def CuvantulLunii(Data = "0"):
-    if Data == "0":
-        Data = str(datetime.datetime.now())[:7].replace("-", "/")
+  * PARAMETRII:
+    ~None~
+    
+  * RETURN:
+    Un string cu un cuvant aleatoriu
+    
+  * FUNCTIA:
+    def CuvantAleatoriu():
+      //Magie neagra de a lui Gruian, thx mate <3
+      CuvantAleatoriu = requests.get('https://dexonline.ro/ajax/randomWord.php')
+      return CuvantAleatoriu.text
 
-    WordPage = "https://dexonline.ro/cuvantul-lunii/" + Data
-    Tree = html.fromstring(requests.get(WordPage).content)
-    Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
-    return Word
-
-def CuvantAleatoriu():
-    CuvantAleatoriu = requests.get('https://dexonline.ro/ajax/randomWord.php')
-    return CuvantAleatoriu.text
-
-def ArticolulLunii():
-    return "Work in progress"
+#------------------------------------------------------------------------#
