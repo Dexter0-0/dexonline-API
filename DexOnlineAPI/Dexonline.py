@@ -22,6 +22,8 @@
 
 from lxml import html
 import requests
+import unidecode
+import datetime
 
 #------------------------------------------------------------------------#
 def NumarCuvintePrefix(Prefix):
@@ -160,9 +162,46 @@ def CuvinteAntonim(Cuvant, NumarCuvinte = 0):
         return Words
 
 #------------------------------------------------------------------------#
+def DefinitieCuvant(Cuvant, NumarDefinitii = 0,  TipDictionar = 0):
+    #Broken af momentan
+    WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
+    Tree = html.fromstring(requests.get(WordPage).content)
+
+    Words = Tree.xpath('/html/body/div[1]/main/div/div/div[1]/div[2]/p/span[1]/text()')
+    print(Words)
+
+#declinari
+
+#sinteza
+
+#------------------------------------------------------------------------#
+def CuvantulZilei(Data = "0"):
+    if Data == "0":
+        Data = str(datetime.datetime.now())[:10].replace("-", "/")
+
+    WordPage = "https://dexonline.ro/cuvantul-zilei/" + Data
+    Tree = html.fromstring(requests.get(WordPage).content)
+    Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div[2]/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
+    return Word
+
+def CuvantulLunii(Data = "0"):
+    if Data == "0":
+        Data = str(datetime.datetime.now())[:7].replace("-", "/")
+
+    WordPage = "https://dexonline.ro/cuvantul-lunii/" + Data
+    Tree = html.fromstring(requests.get(WordPage).content)
+    Word = unidecode.unidecode(str(Tree.xpath('/html/body/div[1]/main/div/div/div[2]/div[2]/p/span/b[1]/text()')[0]).replace(",", "").lower().replace("è", "s").replace("è", "t").replace("ã", "i"))
+    return Word
+
+def CuvantAleatoriu():
+    WordPage = "https://dexonline.ro"
+    Tree = html.fromstring(requests.get(WordPage).content)
+    return Tree.xpath("")
+
 
 if __name__ == '__main__':
-    Words = CuvinteSinonim("deschis")
+    print(CuvantAleatoriu())
 
-    for i in range(len(Words)):
-        print(i, "-", Words[i])
+
+    #for i in range(len(Words)):
+        #print(i, "-", Words[i])
