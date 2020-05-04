@@ -197,11 +197,3 @@ def CuvantAleatoriu():
     WordPage = "https://dexonline.ro"
     Tree = html.fromstring(requests.get(WordPage).content)
     return Tree.xpath("")
-
-
-if __name__ == '__main__':
-    print(CuvantAleatoriu())
-
-
-    #for i in range(len(Words)):
-        #print(i, "-", Words[i])
