@@ -1,3 +1,13 @@
+#-------------------------------------------------------------------------------------#
+#                               !!Important!!                                         #
+#                                                                                     #
+#       Acesta nu este un bot de fazan complet functional ci doar o demonstratie de   #
+#   folosire a functilor din acest API asa ca probabil ca are multe buguri dar va     #
+#   indemn sa il folositi ca un punct de pornire petru un bot complet de fazan sau    #
+#   drept inspiratie pentru alte proiecte care folosesc acest API!! :)))              #
+#                                                                                     #
+#-------------------------------------------------------------------------------------#
+
 if __name__ == '__main__':
     #Game Loop
     while True:
