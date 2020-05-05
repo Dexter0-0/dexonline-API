@@ -128,15 +128,15 @@ def CuvinteSufix(Sufix, NumarCuvinte=0):
         SufixPage = "https://dexonline.net/cuvinte-care-se-termina-cu-" + str(Sufix)
         Tree = html.fromstring(requests.get(SufixPage).content)
         Words = []
-    
+
         PageNumber = len(Tree.xpath('/html/body/div/ul/li'))
-    
+
         if PageNumber == 0:
             PageNumber = 1
-    
+
         for Page in range(1, PageNumber + 1):
             Tree = html.fromstring(requests.get(SufixPage + '/' + str(Page)).content)
-    
+
             for Row in range(1, len(Tree.xpath('/html/body/div/div[3]/div/div'))):
                 for Word in range(1, len(Tree.xpath('/html/body/div/div[3]/div/div[' + str(Row) + ']/a/text()')) + 1):
                     Words.append((str(
@@ -148,12 +148,13 @@ def CuvinteSufix(Sufix, NumarCuvinte=0):
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def CuvinteRima(Cuvant, GradulRimei=1, NumarCuvinte=0):
     try:
         RhymePage = "https://dexonline.net/rime-" + Cuvant + "-gradul-" + str(GradulRimei)
         Tree = html.fromstring(requests.get(RhymePage).content)
         Words = []
-    
+
         for Row in range(1, len(Tree.xpath('/html/body/div/div[2]/div/div'))):
             for Word in range(1, len(Tree.xpath('/html/body/div/div[2]/div/div[' + str(Row) + ']/a/text()')) + 1):
                 Words.append((str(
@@ -164,47 +165,49 @@ def CuvinteRima(Cuvant, GradulRimei=1, NumarCuvinte=0):
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def CuvinteSinonim(Cuvant, NumarCuvinte=0):
     try:
         SynonymousPage = "https://dexonline.net/sinonime-" + Cuvant
         Tree = html.fromstring(requests.get(SynonymousPage).content)
         Words = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/text()')
-    
+
         while (", " in Words):
             Words.remove(", ")
-    
+
         for i in range(len(Words)):
             Words[i] = Words[i].replace(", ", "").replace(".", "")
-    
+
         Words2 = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
-    
+
         for i in range(len(Words2)):
             Words.append(Words2[i])
-    
+
         if NumarCuvinte != 0:
             return Words[:NumarCuvinte]
         else:
             return Words
     except RuntimeError:
         print("Ceva nu a functionat :((((")
+
 
 def CuvinteAntonim(Cuvant, NumarCuvinte=0):
     try:
         AntonymousPage = "https://dexonline.net/antonime-" + Cuvant
         Tree = html.fromstring(requests.get(AntonymousPage).content)
         Words = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/text()')
-    
+
         while (", " in Words):
             Words.remove(", ")
-    
+
         for i in range(len(Words)):
             Words[i] = Words[i].replace(", ", "").replace(".", "")
-    
+
         Words2 = Tree.xpath('/html/body/div/div[2]/div[2]/div/p/i/a/text()')
-    
+
         for i in range(len(Words2)):
             Words.append(Words2[i])
-    
+
         if NumarCuvinte != 0:
             return Words[:NumarCuvinte]
         else:
@@ -212,16 +215,18 @@ def CuvinteAntonim(Cuvant, NumarCuvinte=0):
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def DefinitieCuvant(Cuvant, NumarDefinitii=0, TipDictionar=0):
     try:
         # Broken af momentan
         WordPage = "https://dexonline.ro/definitie/" + str(Cuvant) + "/expandat"
         Tree = html.fromstring(requests.get(WordPage).content)
-    
+
         Contents = Tree.xpath('/html/body/div[1]/main/div/div/div[1]/div[2]/p/span[1]/text()')
         return "Work in progress"
     except RuntimeError:
         print("Ceva nu a functionat :((((")
+
 
 def DeclinariCuvant():
     try:
@@ -229,17 +234,19 @@ def DeclinariCuvant():
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def SintezaCuvant():
     try:
         return "Work in progress"
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def CuvantulZilei(Data="0"):
     try:
         if Data == "0":
             Data = str(datetime.datetime.now())[:10].replace("-", "/")
-    
+
         WordPage = "https://dexonline.ro/cuvantul-zilei/" + Data
         Tree = html.fromstring(requests.get(WordPage).content)
         Word = unidecode.unidecode(
@@ -248,11 +255,12 @@ def CuvantulZilei(Data="0"):
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def CuvantulLunii(Data="0"):
     try:
         if Data == "0":
             Data = str(datetime.datetime.now())[:7].replace("-", "/")
-    
+
         WordPage = "https://dexonline.ro/cuvantul-lunii/" + Data
         Tree = html.fromstring(requests.get(WordPage).content)
         Word = unidecode.unidecode(
@@ -261,11 +269,13 @@ def CuvantulLunii(Data="0"):
     except RuntimeError:
         print("Ceva nu a functionat :((((")
 
+
 def ArticolulLunii():
     try:
         return "Work in progress"
     except RuntimeError:
         print("Ceva nu a functionat :((((")
+
 
 def CuvantAleatoriu():
     try:
